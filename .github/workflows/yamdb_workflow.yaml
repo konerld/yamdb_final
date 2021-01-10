@@ -51,9 +51,9 @@ jobs:
       - name: copy file via ssh key
         uses: appleboy/scp-action@master
         env:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          key: ${{ secrets.SSH_KEY }}
+          HOST: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USER }}
+          KEY: ${{ secrets.SSH_KEY }}
         with:
           source: "docker-compose.yaml, default.conf"
           target: "/home/ubuuser/yamdb_final/"
