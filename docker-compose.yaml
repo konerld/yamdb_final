@@ -14,8 +14,6 @@ services:
   web:
     image: konerld/yamdb:latest
     restart: always
-#    ports:
-#      - "8000:8000"
     depends_on:
       - db
     volumes:
@@ -26,7 +24,7 @@ services:
     image: nginx:1.19.6
     restart: always
     ports:
-      - "80:80"
+      - "88:80"
     volumes:
       - ./static_files:/static
       - ./default.conf:/etc/nginx/conf.d/default.conf

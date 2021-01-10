@@ -54,15 +54,15 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            sudo docker pull konerld/yamdb
-            sudo docker stop $(sudo docker ps -a -q)
+            docker pull konerld/yamdb
+            docker stop $(sudo docker ps -a -q)
             echo "DB_ENGINE=django.db.backends.postgresql" >> .env
             echo "DB_NAME={{secrets.PG_DB_NAME}}" >> .env
             echo "POSTGRES_USER={{secrets.PG_USER}}" >> .env
             echo "POSTGRES_PASSWORD={{secrets.PG_PASSWD}}" >> .env
             echo "DB_HOST=db" >> .env
             echo "DB_PORT=5432" >> .env
-            sudo docker-compose up
+            docker-compose up
 
   send_message:
     runs-on: ubuntu-latest
