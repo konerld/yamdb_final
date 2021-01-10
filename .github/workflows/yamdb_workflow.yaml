@@ -50,11 +50,11 @@ jobs:
     steps:
       - name: copy file via ssh key
         uses: appleboy/scp-action@master
-        with:
+        env:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
-          port: 22
           key: ${{ secrets.SSH_KEY }}
+        with:
           source: "docker-compose.yaml, default.conf"
           target: "/home/ubuuser/yamdb_final/"
       - name: executing remote ssh commands to deploy
