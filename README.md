@@ -1,6 +1,6 @@
 # YaMDb
 
-![](https://github.com/konerld/yamdb_final/workflows/yamdb-final-workflowпш/badge.svg)
+![](https://github.com/konerld/yamdb_final/workflows/yamdb-final-workflow/badge.svg)
 
 ## Описание
 REST API-сервис YaMDb - базы отзывов о фильмах, книгах и музыке.
