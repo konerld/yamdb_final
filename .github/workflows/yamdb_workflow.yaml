@@ -68,9 +68,9 @@ jobs:
             docker stop $(sudo docker ps -a -q)
             rm ~/yamdb_final/.env
             echo "DB_ENGINE=django.db.backends.postgresql" >> ~/yamdb_final/.env
-            echo "DB_NAME={{secrets.PG_DB_NAME}}" >> ~/yamdb_final/.env
-            echo "POSTGRES_USER={{secrets.PG_USER}}" >> ~/yamdb_final/.env
-            echo "POSTGRES_PASSWORD={{secrets.PG_PASSWD}}" >> ~/yamdb_final/.env
+            echo "DB_NAME=${{ secrets.PG_DB_NAME }}" >> ~/yamdb_final/.env
+            echo "POSTGRES_USER=${{ secrets.PG_USER }}" >> ~/yamdb_final/.env
+            echo "POSTGRES_PASSWORD=${{ secrets.PG_PASSWD }}" >> ~/yamdb_final/.env
             echo "DB_HOST=db" >> ~/yamdb_final/.env
             echo "DB_PORT=5432" >> .env
             docker-compose -f ~/yamdb_final/docker-compose.yaml up
