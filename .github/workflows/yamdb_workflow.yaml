@@ -75,7 +75,6 @@ jobs:
             echo "DB_PORT=5432" >> .env
             docker-compose -f ~/yamdb_final/docker-compose.yaml up
 
-
   send_message:
     runs-on: ubuntu-latest
     needs: deploy
