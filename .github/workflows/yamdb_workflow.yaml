@@ -72,7 +72,7 @@ jobs:
             echo "POSTGRES_PASSWORD=${{ secrets.PG_PASSWD }}" >> ~/yamdb_final/.env
             echo "DB_HOST=db" >> ~/yamdb_final/.env
             echo "DB_PORT=5432" >> .env
-            docker-compose -f ~/yamdb_final/docker-compose.yaml up
+            docker-compose -f ~/yamdb_final/docker-compose.yaml up -d
 
   send_message:
     runs-on: ubuntu-latest
