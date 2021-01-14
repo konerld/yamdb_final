@@ -8,12 +8,14 @@ services:
   db:
     image: postgres:13
     volumes:
-      - postgresql_data:/var/lib/postgresql/data/
+      - ./postgresql_data:/var/lib/postgresql/data/
     env_file:
       - ./.env
   web:
     image: konerld/yamdb:latest
     restart: always
+    ports:
+      - "8000:8000"
     depends_on:
       - db
     volumes:
