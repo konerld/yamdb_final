@@ -4,6 +4,7 @@ volumes:
   postgresql_data:
   static:
 
+# devel
 services:
   db:
     image: postgres:13
