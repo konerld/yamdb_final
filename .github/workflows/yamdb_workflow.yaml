@@ -62,7 +62,6 @@ jobs:
             source: "docker-compose.yaml, nginx.conf"
             target: "~/yamdb_final/"
 
-
         - name: executing remote ssh commands to deploy
           uses: appleboy/ssh-action@master
           with:
