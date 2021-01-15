@@ -52,7 +52,7 @@ jobs:
           refs/heads/main
         ', github.ref)
       steps:
-        - uses: actions/checkout@master
+#        - uses: actions/checkout@master
         - name: Copy docker-compose file and config to server
           uses: appleboy/scp-action@master
           with:
@@ -62,24 +62,24 @@ jobs:
             source: "docker-compose.yaml, nginx.conf"
             target: "~/yamdb_final/"
 
-        - name: executing remote ssh commands to deploy
-          uses: appleboy/ssh-action@master
-          with:
-            host: ${{ secrets.HOST }}
-            username: ${{ secrets.USER }}
-            key: ${{ secrets.SSH_KEY }}
-            script: |
-              docker pull konerld/yamdb
-              dockergi-compose -f ~/yamdb_final/docker-compose.yaml stop
-              docker-compose -f ~/yamdb_final/docker-compose.yaml rm -f
-              rm ~/yamdb_final/.env
-              echo "DB_ENGINE=django.db.backends.postgresql" >> ~/yamdb_final/.env
-              echo "DB_NAME=${{ secrets.PG_DB_NAME }}" >> ~/yamdb_final/.env
-              echo "POSTGRES_USER=${{ secrets.PG_USER }}" >> ~/yamdb_final/.env
-              echo "POSTGRES_PASSWORD=${{ secrets.PG_PASSWD }}" >> ~/yamdb_final/.env
-              echo "DB_HOST=db" >> ~/yamdb_final/.env
-              echo "DB_PORT=5432" >> .env
-              docker-compose -f ~/yamdb_final/docker-compose.yaml up -d
+#        - name: executing remote ssh commands to deploy
+#          uses: appleboy/ssh-action@master
+#          with:
+#            host: ${{ secrets.HOST }}
+#            username: ${{ secrets.USER }}
+#            key: ${{ secrets.SSH_KEY }}
+#            script: |
+#              docker pull konerld/yamdb
+#              dockergi-compose -f ~/yamdb_final/docker-compose.yaml stop
+#              docker-compose -f ~/yamdb_final/docker-compose.yaml rm -f
+#              rm ~/yamdb_final/.env
+#              echo "DB_ENGINE=django.db.backends.postgresql" >> ~/yamdb_final/.env
+#              echo "DB_NAME=${{ secrets.PG_DB_NAME }}" >> ~/yamdb_final/.env
+#              echo "POSTGRES_USER=${{ secrets.PG_USER }}" >> ~/yamdb_final/.env
+#              echo "POSTGRES_PASSWORD=${{ secrets.PG_PASSWD }}" >> ~/yamdb_final/.env
+#              echo "DB_HOST=db" >> ~/yamdb_final/.env
+#              echo "DB_PORT=5432" >> .env
+#              docker-compose -f ~/yamdb_final/docker-compose.yaml up -d
 
 
 #  send_message_after_deploy:
