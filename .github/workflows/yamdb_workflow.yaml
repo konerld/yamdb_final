@@ -49,9 +49,10 @@ jobs:
       if:
         contains('
           refs/heads/master
-          refs/heads/master
+          refs/heads/main
         ', github.ref)
       steps:
+        - uses: actions/checkout@master
         - name: Copy docker-compose file and config to server
           uses: appleboy/scp-action@master
           with:
@@ -68,7 +69,7 @@ jobs:
             key: ${{ secrets.SSH_KEY }}
             script: |
               docker pull konerld/yamdb
-              docker-compose -f ~/yamdb_final/docker-compose.yaml stop
+              dockergi-compose -f ~/yamdb_final/docker-compose.yaml stop
               docker-compose -f ~/yamdb_final/docker-compose.yaml rm -f
               rm ~/yamdb_final/.env
               echo "DB_ENGINE=django.db.backends.postgresql" >> ~/yamdb_final/.env
