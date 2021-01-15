@@ -59,6 +59,7 @@ jobs:
             username: ${{ secrets.USER }}
             key: ${{ secrets.SSH_KEY }}
             script: |
+              pwd
               docker pull konerld/yamdb
               docker-compose stop
               docker-compose rm -f
